@@ -23,7 +23,7 @@ export default function AboutPage() {
     <div>
       <section className="relative flex min-h-[360px] items-center overflow-hidden bg-charcoal text-white">
         <Image
-          src="https://commons.wikimedia.org/wiki/Special:FilePath/Tata_trucks.jpg"
+          src="https://commons.wikimedia.org/wiki/Special:FilePath/Tata_Prima_truck.jpg"
           alt="LCM fleet"
           fill
           sizes="100vw"

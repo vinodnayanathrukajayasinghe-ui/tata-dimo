@@ -23,6 +23,14 @@ const supabase = createClient(url, serviceKey, {
 const wiki = (filename) =>
   `https://commons.wikimedia.org/wiki/Special:FilePath/${encodeURIComponent(filename)}`;
 
+// The two cleanest, most modern-looking real Tata truck photos available
+// under a free license on Wikimedia Commons — used across trucks/prime
+// movers/hero since Commons has very few recent-generation Tata truck
+// photos (most uploads are older-generation/worn trucks).
+const PRIMA_CARRIER = wiki("Tata_Prima_truck.jpg"); // clean red Prima car-carrier
+const PRIMA_WHITE = wiki("MDL_Logistik_TATA_Prima_(BE_9321_CU).jpg"); // clean white prime mover
+const DUMPER = wiki("Tata_407_Dumper.JPG"); // tipper stand-in
+
 const CATEGORIES = [
   {
     slug: "trucks",
@@ -30,7 +38,7 @@ const CATEGORIES = [
     name_si: "ට්‍රක් රථ",
     name_ta: "டிரக்குகள்",
     icon: "truck",
-    image: wiki("Tata_LPT_1615_truck_Bangladesh_(24587122563).jpg"),
+    image: PRIMA_CARRIER,
     sort_order: 1,
   },
   {
@@ -66,7 +74,7 @@ const CATEGORIES = [
     name_si: "ටිපර් රථ",
     name_ta: "டிப்பர் வாகனங்கள்",
     icon: "truck",
-    image: wiki("Mini_tipper_vehicle.jpg"),
+    image: DUMPER,
     sort_order: 5,
   },
   {
@@ -75,7 +83,7 @@ const CATEGORIES = [
     name_si: "ප්‍රයිම් මූවර්",
     name_ta: "பிரைம் மூவர்",
     icon: "truck",
-    image: wiki("Truck_on_truck_Tata_LPS_4018_prime_mover,_Bangladesh._(33921484981).jpg"),
+    image: PRIMA_WHITE,
     sort_order: 6,
   },
 ];
@@ -91,8 +99,8 @@ const VEHICLES = [
     category: "trucks",
     name: "Tata Ultra T.9",
     tagline: "Next-gen smart truck platform built for intra-city and last-mile delivery.",
-    hero_image: wiki("TATA_1212_SA_4X4.jpg"),
-    gallery: [wiki("Tata_2000_series_truck.jpg")],
+    hero_image: PRIMA_CARRIER,
+    gallery: [PRIMA_WHITE],
     price_from: 8900000,
     specs: {
       gvw: "9,000 kg",
@@ -112,8 +120,8 @@ const VEHICLES = [
     category: "trucks",
     name: "Tata Ultra T.14",
     tagline: "Higher payload Ultra range for distribution fleets that need more capacity.",
-    hero_image: wiki("TATA_1210SE_-_TVS_Southern_Roadways_Coimbatore.JPG"),
-    gallery: [wiki("Tata_2000_series_truck.jpg")],
+    hero_image: PRIMA_WHITE,
+    gallery: [PRIMA_CARRIER],
     price_from: 10800000,
     specs: {
       gvw: "14,000 kg",
@@ -133,8 +141,8 @@ const VEHICLES = [
     category: "trucks",
     name: "Tata Ultra 1918.T",
     tagline: "The flagship Ultra — maneuverable, fuel-efficient and built for productivity.",
-    hero_image: wiki("Tata_2000_series_truck.jpg"),
-    gallery: [wiki("TATA_1212_SA_4X4.jpg")],
+    hero_image: PRIMA_CARRIER,
+    gallery: [PRIMA_WHITE],
     price_from: 13200000,
     specs: {
       gvw: "18,000 kg",
@@ -154,8 +162,8 @@ const VEHICLES = [
     category: "trucks",
     name: "Tata Signa 2823.T",
     tagline: "Heavy-duty cargo carrier with class-leading power for long-haul fleets.",
-    hero_image: wiki("MDL_Logistik_TATA_Prima_(BE_9321_CU).jpg"),
-    gallery: [wiki("Tata_2000_series_truck.jpg")],
+    hero_image: PRIMA_WHITE,
+    gallery: [PRIMA_CARRIER],
     price_from: 18500000,
     specs: {
       gvw: "28,000 kg",
@@ -179,7 +187,7 @@ const VEHICLES = [
     category: "tippers",
     name: "Tata Prima Tipper",
     tagline: "Engineered for high-volume construction and mining haulage.",
-    hero_image: wiki("Mini_tipper_vehicle.jpg"),
+    hero_image: DUMPER,
     gallery: [],
     price_from: 19500000,
     specs: {
@@ -200,7 +208,7 @@ const VEHICLES = [
     category: "tippers",
     name: "Tata Signa Tipper",
     tagline: "Rugged tipper body on the Signa platform for quarry and site work.",
-    hero_image: wiki("Mini_tipper_vehicle.jpg"),
+    hero_image: DUMPER,
     gallery: [],
     price_from: 17200000,
     specs: {
@@ -221,8 +229,8 @@ const VEHICLES = [
     category: "prime-movers",
     name: "Tata Prima 5530.S",
     tagline: "Long-haul prime mover with advanced tech for fuel efficiency and fleet productivity.",
-    hero_image: wiki("Truck_on_truck_Tata_LPS_4018_prime_mover,_Bangladesh._(33921484981).jpg"),
-    gallery: [wiki("MDL_Logistik_TATA_Prima_(BE_9321_CU).jpg")],
+    hero_image: PRIMA_WHITE,
+    gallery: [PRIMA_CARRIER],
     price_from: 29500000,
     specs: {
       gvw: "55,000 kg (GCW)",
@@ -242,8 +250,8 @@ const VEHICLES = [
     category: "prime-movers",
     name: "Tata Signa 5530.S Prime",
     tagline: "Heavy-duty prime mover engineered for demanding logistics and infrastructure haulage.",
-    hero_image: wiki("MDL_Logistik_TATA_Prima_(BE_9321_CU).jpg"),
-    gallery: [wiki("Truck_on_truck_Tata_LPS_4018_prime_mover,_Bangladesh._(33921484981).jpg")],
+    hero_image: PRIMA_CARRIER,
+    gallery: [PRIMA_WHITE],
     price_from: 27800000,
     specs: {
       gvw: "55,000 kg (GCW)",

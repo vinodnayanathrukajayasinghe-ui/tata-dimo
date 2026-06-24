@@ -9,7 +9,7 @@ import { VehicleCard } from "@/components/vehicles/VehicleCard";
 import { useLanguage } from "@/i18n/LanguageProvider";
 import type { Vehicle, VehicleCategory } from "@/lib/database.types";
 
-const HERO_IMAGE = "https://commons.wikimedia.org/wiki/Special:FilePath/Tata_trucks.jpg";
+const HERO_IMAGE = "https://commons.wikimedia.org/wiki/Special:FilePath/Tata_Prima_truck.jpg";
 
 const OFFERS = [
   { title: "0% Down Payment Leasing", body: "Special fleet finance packages available through our partner banks this quarter." }, // [PLACEHOLDER]
