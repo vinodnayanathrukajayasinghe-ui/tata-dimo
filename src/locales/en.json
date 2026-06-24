@@ -46,11 +46,14 @@
     "demoNotice": "Demo site — placeholder content."
   },
   "home": {
-    "heroTitle": "Built to Carry Sri Lanka Forward",
-    "heroSubtitle": "Authorised dealer and service partner for TATA trucks, buses, pickups and fleet vehicles — island-wide.",
+    "heroTitle": "Genuine TATA Service, Whenever Your Fleet Needs It",
+    "heroSubtitle": "Book a service in minutes at any of our island-wide centres — certified technicians, genuine parts and fast turnaround for your TATA trucks, buses and pickups.",
     "exploreVehicles": "Explore Vehicles",
     "categoriesTitle": "Browse by Category",
     "featuredTitle": "Featured Vehicles",
+    "packagesTitle": "Service Packages",
+    "packagesSubtitle": "Transparent pricing for routine maintenance — choose the package that fits your vehicle.",
+    "bookThisPackage": "Book This Package",
     "whyTitle": "Why Choose LCM",
     "why1Title": "Island-wide Service Network",
     "why1Body": "Service centres across Colombo, Kandy, Kurunegala and Galle keep your fleet moving.",

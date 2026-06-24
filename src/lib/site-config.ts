@@ -2,7 +2,7 @@
 export const siteConfig = {
   name: process.env.NEXT_PUBLIC_SITE_NAME || "Lanka Commercial Motors",
   shortName: "LCM",
-  tagline: "Authorised Dealer & Service Partner for TATA Commercial Vehicles in Sri Lanka",
+  tagline: "Authorised Service Partner & Dealer for TATA Commercial Vehicles in Sri Lanka",
   whatsappNumber: process.env.NEXT_PUBLIC_WHATSAPP_NUMBER || "94770000000",
   phone: "+94 11 234 5000", // [PLACEHOLDER]
   email: "info@lcm.lk", // [PLACEHOLDER]

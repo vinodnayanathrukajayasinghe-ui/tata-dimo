@@ -2,11 +2,13 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { CheckCircle2 } from "lucide-react";
+import { CheckCircle2, Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { CategoryCard } from "@/components/vehicles/CategoryCard";
 import { VehicleCard } from "@/components/vehicles/VehicleCard";
 import { useLanguage } from "@/i18n/LanguageProvider";
+import { cn, formatLKR } from "@/lib/utils";
+import { SERVICE_PACKAGES } from "@/lib/service-packages";
 import type { Vehicle, VehicleCategory } from "@/lib/database.types";
 
 const HERO_IMAGE = "https://commons.wikimedia.org/wiki/Special:FilePath/Tata_Prima_truck.jpg";
@@ -37,7 +39,7 @@ export function HomePageContent({
 
   return (
     <div>
-      {/* Hero */}
+      {/* Hero — service booking is the primary call to action */}
       <section className="relative flex min-h-[560px] items-center overflow-hidden bg-charcoal text-white">
         <Image
           src={HERO_IMAGE}
@@ -50,26 +52,97 @@ export function HomePageContent({
         <div className="absolute inset-0 bg-gradient-to-r from-charcoal via-charcoal/70 to-transparent" />
         <div className="container relative z-10 py-20">
           <span className="mb-4 inline-block rounded-full bg-accent px-4 py-1 text-xs font-bold uppercase tracking-wide">
-            Authorised TATA Dealer — Sri Lanka
+            Authorised TATA Service & Sales Partner — Sri Lanka
           </span>
           <h1 className="max-w-2xl font-heading text-4xl font-extrabold leading-tight sm:text-5xl lg:text-6xl">
             {t("home.heroTitle")}
           </h1>
           <p className="mt-5 max-w-xl text-lg text-white/80">{t("home.heroSubtitle")}</p>
           <div className="mt-8 flex flex-wrap gap-4">
-            <Link href="/vehicles">
-              <Button variant="accent" size="lg">{t("home.exploreVehicles")}</Button>
-            </Link>
             <Link href="/service/book">
+              <Button variant="accent" size="lg">{t("common.bookService")}</Button>
+            </Link>
+            <Link href="/vehicles">
               <Button variant="outline" size="lg" className="border-white text-white hover:bg-white/10">
-                {t("common.bookService")}
+                {t("home.exploreVehicles")}
               </Button>
             </Link>
           </div>
         </div>
       </section>
 
-      {/* Categories */}
+      {/* Service CTA band */}
+      <section className="bg-primary py-14 text-white">
+        <div className="container flex flex-col items-center justify-between gap-6 text-center lg:flex-row lg:text-left">
+          <div>
+            <h2 className="font-heading text-2xl font-bold sm:text-3xl">{t("home.serviceCtaTitle")}</h2>
+            <p className="mt-2 text-white/80">{t("home.serviceCtaSubtitle")}</p>
+          </div>
+          <Link href="/service/book">
+            <Button variant="accent" size="lg">{t("common.bookService")}</Button>
+          </Link>
+        </div>
+      </section>
+
+      {/* Service Packages preview */}
+      <section className="container py-16">
+        <div className="mb-8 flex items-end justify-between">
+          <div>
+            <h2 className="font-heading text-2xl font-bold text-charcoal sm:text-3xl">{t("home.packagesTitle")}</h2>
+            <p className="mt-2 max-w-xl text-charcoal/60">{t("home.packagesSubtitle")}</p>
+          </div>
+          <Link href="/service/packages" className="hidden text-sm font-semibold text-primary hover:underline sm:inline">
+            {t("common.viewAll")}
+          </Link>
+        </div>
+        <div className="grid gap-6 lg:grid-cols-3">
+          {SERVICE_PACKAGES.map((pkg) => (
+            <div
+              key={pkg.name}
+              className={cn(
+                "flex flex-col rounded-2xl border p-6 shadow-sm",
+                pkg.highlight ? "border-primary bg-primary text-white" : "border-charcoal/10 bg-white"
+              )}
+            >
+              <h3 className="font-heading text-xl font-bold">{pkg.name}</h3>
+              <p className={cn("mt-2 text-2xl font-extrabold", pkg.highlight ? "text-white" : "text-primary")}>
+                {formatLKR(pkg.price)}
+              </p>
+              <ul className="mt-5 flex-1 space-y-2.5 text-sm">
+                {pkg.items.map((item) => (
+                  <li key={item} className="flex items-start gap-2">
+                    <Check className={cn("mt-0.5 h-4 w-4 shrink-0", pkg.highlight ? "text-white" : "text-accent")} />
+                    <span className={pkg.highlight ? "text-white/90" : "text-charcoal/70"}>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link href="/service/book" className="mt-6">
+                <Button variant={pkg.highlight ? "accent" : "primary"} className="w-full">
+                  {t("home.bookThisPackage")}
+                </Button>
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Why choose LCM */}
+      <section className="bg-offwhite py-16">
+        <div className="container">
+          <h2 className="mb-10 font-heading text-2xl font-bold text-charcoal sm:text-3xl">{t("home.whyTitle")}</h2>
+          <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
+            {whyItems.map((item) => (
+              <div key={item.title} className="rounded-xl border border-charcoal/10 bg-white p-6 shadow-sm">
+                <CheckCircle2 className="mb-3 h-8 w-8 text-accent" />
+                <h3 className="mb-2 font-heading text-base font-bold text-charcoal">{item.title}</h3>
+                <p className="text-sm text-charcoal/60">{item.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Vehicle categories */}
       <section className="container py-16">
         <h2 className="mb-8 font-heading text-2xl font-bold text-charcoal sm:text-3xl">{t("home.categoriesTitle")}</h2>
         <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 lg:grid-cols-6">
@@ -95,33 +168,6 @@ export function HomePageContent({
               </div>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* Why choose LCM */}
-      <section className="container py-16">
-        <h2 className="mb-10 font-heading text-2xl font-bold text-charcoal sm:text-3xl">{t("home.whyTitle")}</h2>
-        <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {whyItems.map((item) => (
-            <div key={item.title} className="rounded-xl border border-charcoal/10 bg-white p-6 shadow-sm">
-              <CheckCircle2 className="mb-3 h-8 w-8 text-accent" />
-              <h3 className="mb-2 font-heading text-base font-bold text-charcoal">{item.title}</h3>
-              <p className="text-sm text-charcoal/60">{item.body}</p>
-            </div>
-          ))}
-        </div>
-      </section>
-
-      {/* Service CTA band */}
-      <section className="bg-primary py-14 text-white">
-        <div className="container flex flex-col items-center justify-between gap-6 text-center lg:flex-row lg:text-left">
-          <div>
-            <h2 className="font-heading text-2xl font-bold sm:text-3xl">{t("home.serviceCtaTitle")}</h2>
-            <p className="mt-2 text-white/80">{t("home.serviceCtaSubtitle")}</p>
-          </div>
-          <Link href="/service/book">
-            <Button variant="accent" size="lg">{t("common.bookService")}</Button>
-          </Link>
         </div>
       </section>
 

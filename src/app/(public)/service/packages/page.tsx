@@ -3,41 +3,9 @@ import Link from "next/link";
 import { Check } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { cn, formatLKR } from "@/lib/utils";
+import { SERVICE_PACKAGES } from "@/lib/service-packages";
 
 export const metadata: Metadata = { title: "Service Packages | Lanka Commercial Motors" };
-
-const PACKAGES = [
-  {
-    name: "Basic",
-    price: 8500, // [PLACEHOLDER]
-    highlight: false,
-    items: ["Engine oil & filter change", "Multi-point inspection", "Brake check", "Fluid top-up"],
-  },
-  {
-    name: "Standard",
-    price: 18500,
-    highlight: true,
-    items: [
-      "Everything in Basic",
-      "Air & fuel filter replacement",
-      "Brake pad inspection & adjustment",
-      "Battery & electrical check",
-      "Wheel alignment check",
-    ],
-  },
-  {
-    name: "Premium",
-    price: 32000,
-    highlight: false,
-    items: [
-      "Everything in Standard",
-      "Full diagnostic scan",
-      "Suspension & steering inspection",
-      "Transmission service",
-      "Genuine parts warranty",
-    ],
-  },
-];
 
 export default function ServicePackagesPage() {
   return (
@@ -49,7 +17,7 @@ export default function ServicePackagesPage() {
       </p>
 
       <div className="mt-10 grid gap-6 lg:grid-cols-3">
-        {PACKAGES.map((pkg) => (
+        {SERVICE_PACKAGES.map((pkg) => (
           <div
             key={pkg.name}
             className={cn(

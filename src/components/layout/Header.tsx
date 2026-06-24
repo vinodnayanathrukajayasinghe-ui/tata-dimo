@@ -44,14 +44,8 @@ export function Header() {
         </Link>
 
         <nav className="hidden items-center gap-6 lg:flex">
-          {navLinks.slice(0, 1).map((link) => (
-            <Link key={link.href} href={link.href} className="text-sm font-semibold text-charcoal hover:text-primary">
-              {link.label}
-            </Link>
-          ))}
-
           <details className="group relative">
-            <summary className="flex cursor-pointer list-none items-center gap-1 text-sm font-semibold text-charcoal hover:text-primary">
+            <summary className="flex cursor-pointer list-none items-center gap-1 text-sm font-semibold text-primary">
               {t("nav.bookService")} <ChevronDown className="h-3.5 w-3.5" />
             </summary>
             <div className="absolute left-0 top-full z-10 mt-2 w-56 rounded-md border border-charcoal/10 bg-white py-2 shadow-lg">
@@ -63,7 +57,7 @@ export function Header() {
             </div>
           </details>
 
-          {navLinks.slice(1).map((link) => (
+          {navLinks.map((link) => (
             <Link key={link.href} href={link.href} className="text-sm font-semibold text-charcoal hover:text-primary">
               {link.label}
             </Link>
